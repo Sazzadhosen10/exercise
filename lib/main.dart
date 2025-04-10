@@ -28,13 +28,24 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' Medex'),
-        centerTitle: true,
+        title: Text(
+          ' Medex', 
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),),
+       
         titleSpacing: 2,
         toolbarHeight: 60,
         toolbarOpacity: 1,
         elevation: 10,
         backgroundColor: const Color.fromARGB(255, 4, 152, 110),
+        actions: [
+          IconButton(onPressed: () {},icon: Icon(Icons.search),),
+          IconButton(onPressed: () {},icon: Icon(Icons.notifications),),
+          IconButton(onPressed: () {},icon: Icon(Icons.settings),),
+        ],
       ),
       body:Text('Welcome to My Home Page!'),
     );
