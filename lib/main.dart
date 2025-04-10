@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( 
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
@@ -73,6 +73,32 @@ class MyHomePage extends StatelessWidget {
         foregroundColor: Colors.white,
         onPressed: () => MySnapBar("Floating Action Button", context),
         child: Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        items:  [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        onTap: (index) {
+          if (index == 0) {
+            MySnapBar("Home", context);
+          } else if (index == 1) {
+            MySnapBar("Search", context);
+          } else if (index == 2) {
+            MySnapBar("Settings", context);
+          }
+        },
       ),
       body: Text('Welcome to My Home Page!'),
     );
