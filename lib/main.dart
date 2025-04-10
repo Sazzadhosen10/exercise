@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      darkTheme: ThemeData(primarySwatch: Colors.blue),
+      color: Colors.blue,
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(' Medex'),
+        centerTitle: true,
+        titleSpacing: 2,
+        toolbarHeight: 60,
+        toolbarOpacity: 1,
+        elevation: 10,
+        backgroundColor: const Color.fromARGB(255, 4, 152, 110),
+      ),
+      body:Text('Welcome to My Home Page!'),
+    );
+  }
+}
