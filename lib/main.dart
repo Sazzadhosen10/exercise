@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -164,7 +163,105 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Text('Welcome to My Home Page!'),
+      endDrawer: Drawer(
+        child: ListView(
+         padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+               padding: EdgeInsets.all(0),
+             
+              child:UserAccountsDrawerHeader(
+                margin: EdgeInsets.all(0),
+                 decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 5, 123, 45),
+              ),
+                accountName: Text(
+                  'John Doe',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: Text('sazzad@gmail.com',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                currentAccountPicture:CircleAvatar(child: Image.network('https://static.vecteezy.com/system/resources/thumbnails/048/044/665/small/portrait-of-happy-smiling-young-businessman-isolated-on-transparent-background-png.png'),) 
+                
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                MySnackBar("Profile", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                MySnackBar("Home", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                MySnackBar("Settings", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () {
+                 MySnackBar("Logout", context);
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Container(
+        //color: const Color.fromARGB(255, 144, 144, 5),
+        alignment: Alignment.center,
+        margin: EdgeInsets.fromLTRB(20, 40, 25, 30),
+        padding: EdgeInsets.all(20),
+           decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 129, 159, 6),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(255, 74, 65, 65).withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+          child:
+           Text(
+            'Welcome to Medex',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        
+       
+         
+        
+
+      ),
+       
+        
     );
   }
 }
