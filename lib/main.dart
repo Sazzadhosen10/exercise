@@ -9,12 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( 
+    return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch:  Colors.blue,
       ),
       darkTheme: ThemeData(primarySwatch: Colors.blue),
-      color: Colors.blue,
+      color: Colors.green,
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
-  MySnapBar(message, context) {
+  MySnackBar(message, context) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: Duration(seconds: 1),
@@ -36,7 +36,6 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text(
           ' Medex',
           style: TextStyle(
@@ -53,16 +52,20 @@ class MyHomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              MySnapBar("HI", context);
+               MySnackBar("HI", context);
             },
             icon: Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {MySnapBar("HELLO", context);},
+            onPressed: () {
+               MySnackBar("HELLO", context);
+            },
             icon: Icon(Icons.notifications),
           ),
           IconButton(
-            onPressed: () {MySnapBar("HEY", context);},
+            onPressed: () {
+               MySnackBar("HEY", context);
+            },
             icon: Icon(Icons.settings),
           ),
         ],
@@ -71,12 +74,12 @@ class MyHomePage extends StatelessWidget {
         elevation: 10,
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
-        onPressed: () => MySnapBar("Floating Action Button", context),
+        onPressed: () => MySnackBar("Floating Action Button", context),
         child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        items:  [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -92,13 +95,74 @@ class MyHomePage extends StatelessWidget {
         ],
         onTap: (index) {
           if (index == 0) {
-            MySnapBar("Home", context);
+            MySnackBar("Home", context);
           } else if (index == 1) {
-            MySnapBar("Search", context);
+            MySnackBar("Search", context);
           } else if (index == 2) {
-            MySnapBar("Settings", context);
+            MySnackBar("Settings", context);
           }
         },
+      ),
+      drawer: Drawer(
+        child: ListView(
+         padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+               padding: EdgeInsets.all(0),
+             
+              child:UserAccountsDrawerHeader(
+                margin: EdgeInsets.all(0),
+                 decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 5, 123, 45),
+              ),
+                accountName: Text(
+                  'John Doe',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: Text('sazzad@gmail.com',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                currentAccountPicture:CircleAvatar(child: Image.network('https://static.vecteezy.com/system/resources/thumbnails/048/044/665/small/portrait-of-happy-smiling-young-businessman-isolated-on-transparent-background-png.png'),) 
+                
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                MySnackBar("Profile", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                MySnackBar("Home", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                MySnackBar("Settings", context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () {
+                 MySnackBar("Logout", context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Text('Welcome to My Home Page!'),
     );
